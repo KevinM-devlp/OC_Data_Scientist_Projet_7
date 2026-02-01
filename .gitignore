@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Données (initiales & intermédiaires)
+data/Donnee_kaggle/
+data/Dataframes_modelisation/
+
+# MLflow (utilisable en local seulement)
+mlruns/
