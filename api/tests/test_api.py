@@ -16,10 +16,17 @@ import os
 import pickle
 import pytest
 from pathlib import Path
-from dotenv import load_dotenv
+
+try:
+    from dotenv import load_dotenv
+except Exception:
+    load_dotenv = None
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
+
+# Si .env est dispo, on utilise load_dotenv
+if load_dotenv is not None:
+    load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
 @pytest.fixture(scope="session", autouse=True)
 def set_env():

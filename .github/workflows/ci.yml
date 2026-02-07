@@ -20,16 +20,19 @@ jobs:
           cache: "pip"
           cache-dependency-path: |
             api/requirements.txt
+            requirements-dev.txt
 
       - name: Install dependencies (API)
         run: |
           python -m pip install --upgrade pip
           pip install -r api/requirements.txt
+          pip install -r requirements-dev.txt
 
       - name: Run tests
         env:
           THRESHOLD: "0.51"
           CLIENTS_PKL: "clients_production_sample.pkl"
+          SHAP_PKL: "shap_top10.pkl"
           ID_COL: "SK_ID_CURR"
 
         run: |
