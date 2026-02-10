@@ -89,6 +89,8 @@ Le dashboard permet :
 
 Le dashboard est déployé sur Streamlit Cloud et consomme l’API distante.
 
+Lien du dashboard: https://ocdatascientistprojet7-div5ucbqsgfizsqfhcp6p8.streamlit.app/
+
 ## Déploiement cloud
 
 API : Render (Flask + Gunicorn)
