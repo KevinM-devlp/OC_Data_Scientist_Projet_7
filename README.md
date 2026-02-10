@@ -31,13 +31,7 @@ Lien vers les données : https://www.kaggle.com/c/home-credit-default-risk/data
 
 ## Architecture générale
 
-Utilisateur
-↓
-Dashboard Streamlit (Cloud)
-↓ requêtes HTTP
-API Flask (Render)
-↓
-Modèle de Machine Learning (LightGBM)
+Utilisateur -> Dashboard Streamlit (Cloud) -> requêtes HTTP -> API Flask (Render) -> Modèle(LightGBM)
 
 - Le **dashboard** consomme l’API via des requêtes REST
 - L’API est **indépendante** du dashboard
@@ -45,26 +39,28 @@ Modèle de Machine Learning (LightGBM)
 
 ## Structure du projet
 
-├── api/ # API de prédiction (Flask)
-│ ├── app.py # Endpoints /health et /predict
-│ ├── model_loader.py # Chargement du modèle (MLflow ou joblib)
-│ ├── model_prod/ # Modèle final (model.joblib)
-│ ├── requirements.txt # Dépendances API
-│
-├── dashboard/ # Dashboard Streamlit
-│ ├── app.py # Interface utilisateur
-│ ├── requirements.txt # Dépendances dashboard
-│
-├── data/
-│ └── final_data/ # Jeux de données finaux (clients, SHAP, etc.)
-│
-├── notebooks/ # Notebooks de modélisation
-│ ├── requirements.txt # Dépendances notebooks
-│
-├── requirements-dev.txt # Dépendances développement (tests)
-├── .github/workflows/ci.yml # Pipeline CI (GitHub Actions)
-├── README.md # Documentation du projet
+```text
+api/
+├── app.py                # Endpoints /health et /predict
+├── model_loader.py       # Chargement du modèle (MLflow ou joblib)
+├── model_prod/
+│   └── model.joblib      # Modèle final
+└── requirements.txt      # Dépendances API
 
+dashboard/
+├── app.py                # Interface utilisateur Streamlit
+└── requirements.txt      # Dépendances dashboard
+
+data/
+└── final_data/           # Jeux de données finaux (clients, SHAP, etc.)
+
+notebooks/
+└── requirements.txt      # Dépendances notebooks
+
+requirements-dev.txt      # Dépendances développement (tests)
+.github/workflows/ci.yml  # Pipeline CI (GitHub Actions)
+README.md                 # Documentation du projet
+```
 ---
 
 ## API de prédiction (Flask)
